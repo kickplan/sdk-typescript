@@ -1,4 +1,4 @@
 export declare type AccountRequest = {
-	key: string;
-	plans?: string[];
+  key: string;
+  plans?: string[];
 }

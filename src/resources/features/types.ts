@@ -1,4 +1,4 @@
 export declare type Feature = {
-	key: string;
-	value?: boolean;
+  key: string;
+  value?: boolean;
 }

@@ -26,15 +26,15 @@ After importing, please initialize your client:
 
 ```javascript
 const kickplan = new KickplanApi({
-	apiKey: 'YOUR_API_KEY_HERE',
-	baseUrl: 'YOUR_URL_HERE'
+  apiKey: 'YOUR_API_KEY_HERE',
+  baseUrl: 'YOUR_URL_HERE'
 })
 ```
 
-.env variables are also supported via KICKPLAN_API_KEY adn KICKPLAN_BASE_URL respectively.
+.env variables are also supported via KICKPLAN_API_KEY and KICKPLAN_BASE_URL respectively.
 
 
-# Features:
+# [Features](https://github.com/kickplan/sdk-typescript/blob/v1/src/resources/features/index.ts):
 
 To check which features are resolvable
 
@@ -44,17 +44,17 @@ await kickplan.features.resolve()
 
 To resolve features with context
 
-```javascript
+```typescript
 await kickplan.features.resolveWithAccount(accountId: string)
 ```
 
 To resolve a specific feature with context
 
-```javascript
+```typescript
 await kickplan.features.isFeatureAvailableForAccount(featureName: string, accountId: string)
 ```
 
-# Accounts:
+# [Accounts](https://github.com/kickplan/sdk-typescript/blob/v1/src/resources/accounts/index.ts):
 
 In order to resolve features for an account, Kickplan needs to know an account key and the plan key they are on. Plan keys are not currently exposed in the API but will be soon.
 
@@ -62,7 +62,7 @@ In order to resolve features for an account, Kickplan needs to know an account k
 await kickplan.accounts.post({ key: string, plans?: string[] })
 ```
 
-# Metrics:
+# [Metrics](https://github.com/kickplan/sdk-typescript/blob/v1/src/resources/metrics/index.ts):
 
 A request to set a value for a key metric.
 
@@ -70,5 +70,5 @@ A request to set a value for a key metric.
 await kickplan.metrics.setMetricsKey({ key: string, value: string, timestamp: Date })
 ```
 
-Returns a response with metrics json object.
+Returns a response with [metrics json](https://github.com/kickplan/sdk-typescript/tree/v1) object.
 
