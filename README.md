@@ -70,5 +70,5 @@ A request to set a value for a key metric.
 await kickplan.metrics.setMetricsKey({ key: string, value: string, timestamp: Date })
 ```
 
-Returns a response with [metrics json](https://github.com/kickplan/sdk-typescript/tree/v1) object.
+Returns a response with [metrics response json](https://github.com/kickplan/sdk-typescript/blob/v1/src/resources/metrics/types.ts) object.
 
