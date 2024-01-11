@@ -30,6 +30,7 @@ export abstract class Base {
     };
 
     return fetch(url, config).then((response) => {
+      // console.log(response)
       if (response.ok) {
         return response.json();
       }
