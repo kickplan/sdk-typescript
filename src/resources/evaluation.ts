@@ -1,11 +1,16 @@
 export type FlagValueType = 'boolean' | 'string' | 'number' | 'object';
 export type PrimitiveValue = null | boolean | string | number;
-export type JsonObject = { [key: string]: JsonValue };
-export type JsonArray = JsonValue[];
-export type JsonValue = PrimitiveValue | JsonObject | JsonArray;
+export type JSONObject = { [key: string]: JSONValue };
+export type JSONArray = JSONValue[];
+export type JSONValue = PrimitiveValue | JSONObject | JSONArray;
+// type JSONValue =
+//     | string
+//     | number
+//     | boolean
+//     | { [x: string]: JSONValue }
+//     | Array<JSONValue>;
 
-
-export type FlagValue = boolean | string | number | JsonValue;
+export type FlagValue = boolean | string | number | JSONValue;
 
 export class Evaluation {
 	getBooleanValue(key: string, value: FlagValue): boolean {
@@ -26,7 +31,7 @@ export class Evaluation {
 		}
 		throw Error('Value is not a number')
 	}
-	getObjectValue(key: string, value: FlagValue): JsonObject {
+	getObjectValue(key: string, value: FlagValue): JSONValue {
 		if (typeof value === 'object') {
 			return value
 		}

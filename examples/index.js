@@ -9,9 +9,9 @@ async function exampleTests() {
 	/*      FEATURES      */
 	// await client.features.resolve()
 	const result = await client.features.resolveWithAccount('123')
-	// console.log(result)
+	console.log(result)
 	const result2 = await client.features.isFeatureAvailableForAccount('test', '123')
-	// console.log(result2)
+	console.log(result2)
 
 	/*      ACCOUNTS       */
 	
@@ -23,6 +23,11 @@ async function exampleTests() {
 	// /*     METRICS        */
 	// const result4 = await client.metrics.setMetricsKey({ key: 'features', value: '123', timestamp: new Date() })
 	// console.log(result4)
+
+	const isBoolean = client.evaluation.getBooleanValue('key', true)
+	console.log(isBoolean)
+
+	client.evaluation.getObjectValue('key', 'string')
 }
 
 exampleTests()
