@@ -3,12 +3,6 @@ export type PrimitiveValue = null | boolean | string | number;
 export type JSONObject = { [key: string]: JSONValue };
 export type JSONArray = JSONValue[];
 export type JSONValue = PrimitiveValue | JSONObject | JSONArray;
-// type JSONValue =
-//     | string
-//     | number
-//     | boolean
-//     | { [x: string]: JSONValue }
-//     | Array<JSONValue>;
 
 export type FlagValue = boolean | string | number | JSONValue;
 
