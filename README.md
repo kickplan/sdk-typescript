@@ -74,3 +74,15 @@ await kickplan.metrics.setMetricsKey({ key: string, value: string, timestamp: Da
 
 Returns a response with [metrics response json](https://github.com/kickplan/sdk-typescript/blob/v1/src/resources/metrics/types.ts) object.
 
+# [Evaluation](https://github.com/kickplan/sdk-typescript/blob/v1/src/resources/evaluation.ts)
+
+4 evaluation methods are included
+
+```javascript
+kickplan.evaluation.getBooleanValue(key, value)
+kickplan.evaluation.getStringValue(key, value)
+kickplan.evaluation.getNumberValue(key, value)
+kickplan.evaluation.getObjectValue(key, value)
+
+```
+
