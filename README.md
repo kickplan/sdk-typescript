@@ -7,6 +7,8 @@ To test this SDK follow these steps:
 4. run "npm install .."
 5. "node index.js" in examples directory. 
 6. Edit index.js file in examples directory as needed.
+https://openfeature.dev/specification/types
+
 
 # Configuration
 
