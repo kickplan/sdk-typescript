@@ -1,4 +1,4 @@
-#Introduction
+# Introduction
 
 Kickplan takes care of the complex business logic for monetization, using our SDK, your application only needs to manage access to features and track value metrics. These functions are keyed by account. For detailed terminology, please consult our documentation. 
 
