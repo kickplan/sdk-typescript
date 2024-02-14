@@ -2,7 +2,7 @@ root: ./docs
 structure:
   readme: Introduction.md
   summary: Summary.md
-  feature_flagging: Feature.md
+  feature_flagging: Features.md
   metrics: Metrics.md
   account_creation: Account.md
 shadowDocs: 
