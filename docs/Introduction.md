@@ -28,7 +28,7 @@ const kickplan = new KickplanApi({
 .env variables are also supported via KICKPLAN_API_KEY and KICKPLAN_BASE_URL respectively.
 
 
-# [Features](https://github.com/kickplan/sdk-typescript/blob/v1/src/resources/features/index.ts):
+# [Features](https://github.com/kickplan/sdk-typescript/blob/main/src/resources/features/index.ts):
 
 To check which features are resolvable
 
@@ -48,7 +48,7 @@ To resolve a specific feature with context
 await kickplan.features.isFeatureAvailableForAccount(featureName: string, accountId: string)
 ```
 
-# [Accounts](https://github.com/kickplan/sdk-typescript/blob/v1/src/resources/accounts/index.ts):
+# [Accounts](https://github.com/kickplan/sdk-typescript/blob/main/src/resources/accounts/index.ts):
 
 In order to resolve features for an account, Kickplan needs to know an account key and the plan key they are on. Plan keys are not currently exposed in the API but will be soon.
 
@@ -56,7 +56,7 @@ In order to resolve features for an account, Kickplan needs to know an account k
 await kickplan.accounts.post({ key: string, plans?: string[] })
 ```
 
-# [Metrics](https://github.com/kickplan/sdk-typescript/blob/v1/src/resources/metrics/index.ts):
+# [Metrics](https://github.com/kickplan/sdk-typescript/blob/main/src/resources/metrics/index.ts):
 
 A request to set a value for a key metric.
 
@@ -66,7 +66,7 @@ await kickplan.metrics.setMetricsKey({ key: string, value: string, timestamp: Da
 
 Returns a response with [metrics response json](https://github.com/kickplan/sdk-typescript/blob/v1/src/resources/metrics/types.ts) object.
 
-# [Evaluation](https://github.com/kickplan/sdk-typescript/blob/v1/src/resources/evaluation.ts)
+# [Evaluation](https://github.com/kickplan/sdk-typescript/blob/main/src/resources/evaluation.ts)
 
 4 evaluation methods are included
 
