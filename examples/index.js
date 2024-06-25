@@ -14,20 +14,17 @@ async function exampleTests() {
 	console.log(result2)
 
 	/*      ACCOUNTS       */
-	
 		// const result3 = await client.accounts.post({ key: 'features', plans: ['123'] })
 		// console.log(result3)
 
+	/*     METRICS        */
+	  // const result4 = await client.metrics.setMetricsKey({ key: 'video-watched', value: '60', account_key: '123' })
+	  // console.log(result4)
 
+	// const isBoolean = client.evaluation.getBooleanValue('key', true)
+	// console.log(isBoolean)
 
-	// /*     METRICS        */
-	// const result4 = await client.metrics.setMetricsKey({ key: 'features', value: '123', timestamp: new Date() })
-	// console.log(result4)
-
-	const isBoolean = client.evaluation.getBooleanValue('key', true)
-	console.log(isBoolean)
-
-	client.evaluation.getObjectValue('key', 'string')
+	// client.evaluation.getObjectValue('key', 'string')
 }
 
 exampleTests()

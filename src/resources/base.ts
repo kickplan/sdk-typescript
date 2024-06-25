@@ -29,12 +29,25 @@ export abstract class Base {
       headers,
     };
 
-    return fetch(url, config).then((response) => {
-      // console.log(response)
-      if (response.ok) {
-        return response.json();
-      }
-      throw new Error(response.statusText);
-    });
+    return fetch(url, config)
+      .then((response) => {
+        return response.text().then((text) => {
+          if (!response.ok) {
+            throw new Error(response.statusText);
+          }
+
+          // Some endpoints return empty body
+          if (!text) {
+            return {} as T;
+          }
+
+          // If we have data, it's JSON
+          return JSON.parse(text);
+
+        });
+      })
+      .catch((error) => {
+        throw new Error(error);
+      });
   }
 }
