@@ -1,7 +1,7 @@
 # Table Of Contents
-[Introduction](https://docs.kickplan.com/sdk-typescript)
+[Introduction](Introduction.md)
 
 # Integration Guide
-[Feature Flagging](https://docs.kickplan.com/sdk-typescript/feature-flagging)
-[Metrics](https://docs.kickplan.com/sdk-typescript/metrics)
-[Account Creation](https://docs.kickplan.com/sdk-typescript/account-creation)
+[Feature Flagging](Features.md)
+[Metrics](Metrics.md)
+[Account Creation](Account.md)
