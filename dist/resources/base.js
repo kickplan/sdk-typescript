@@ -17,11 +17,20 @@ class Base {
             'Authorization': `Bearer ${this.apiKey}`
         };
         const config = Object.assign(Object.assign({}, options), { headers });
-        return (0, node_fetch_1.default)(url, config).then((response) => {
-            if (response.ok) {
-                return response.json();
-            }
-            throw new Error(response.statusText);
+        return (0, node_fetch_1.default)(url, config)
+            .then((response) => {
+            return response.text().then((text) => {
+                if (!response.ok) {
+                    throw new Error(response.statusText);
+                }
+                if (!text) {
+                    return {};
+                }
+                return JSON.parse(text);
+            });
+        })
+            .catch((error) => {
+            throw new Error(error);
         });
     }
 }

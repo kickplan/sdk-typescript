@@ -4,9 +4,15 @@ exports.Metrics = void 0;
 const base_1 = require("../base");
 class Metrics extends base_1.Base {
     setMetricsKey(data) {
-        return this.request(`/api/metrics/${data.key}/set`, {
+        return this.request(`/api/metrics/set`, {
             method: 'POST',
-            body: JSON.stringify({ value: data.value, timestamp: data.timestamp })
+            body: JSON.stringify({
+                key: data.key,
+                value: data.value,
+                account_key: data.account_key,
+                time: data.time,
+                idempotency_key: data.idempotency_key
+            })
         });
     }
 }
