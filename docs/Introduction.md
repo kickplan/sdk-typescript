@@ -1,24 +1,24 @@
 # Introduction
 
-Kickplan takes care of the complex business logic for monetization, using our SDK, your application only needs to manage access to features and track value metrics. These functions are keyed by account. For detailed terminology, please consult our documentation. 
+Kickplan takes care of the complex business logic for monetization, using our SDK, your application only needs to manage access to features and track value metrics. These functions are keyed by account. For detailed terminology, please consult our documentation.
 
 # Configuration
 
 To import the package using CommonJS
 
-```javascript
-const { KickplanApi } = require('sdk-typescript')
+```typescript
+const { KickplanApi } = require('@kickplan/sdk-typescript')
 ```
 
 Or in ES6
 
-```javascript
-import { KickplanApi } = require('sdk-typescript')
+```typescript
+import { KickplanApi } from '@kickplan/sdk-typescript'
 ```
 
 After importing, please initialize your client:
 
-```javascript
+```typescript
 const kickplan = new KickplanApi({
   apiKey: 'YOUR_API_KEY_HERE',
   baseUrl: 'YOUR_URL_HERE'
@@ -27,53 +27,47 @@ const kickplan = new KickplanApi({
 
 .env variables are also supported via KICKPLAN_API_KEY and KICKPLAN_BASE_URL respectively.
 
+# Available Resources
 
-# [Features](https://github.com/kickplan/sdk-typescript/blob/main/src/resources/features/index.ts):
-
-To check which features are resolvable
-
-```javascript
-await kickplan.features.resolve()
-```
-
-To resolve features with context
+## [Features](https://github.com/kickplan/sdk-typescript/blob/main/src/resources/features/index.ts)
+Manage and check feature availability for accounts. Use this to determine which features are accessible to specific accounts.
 
 ```typescript
-await kickplan.features.resolveWithAccount(accountId: string)
+await kickplan.features.resolveWithAccount(featureKey, accountKey)
 ```
 
-To resolve a specific feature with context
+## [Accounts](https://github.com/kickplan/sdk-typescript/blob/main/src/resources/accounts/index.ts)
+Handle account operations including creation, updates, and management of account-specific settings.
 
 ```typescript
-await kickplan.features.isFeatureAvailableForAccount(featureName: string, accountId: string)
+await kickplan.accounts.create({
+  key: "unique-account-id",
+  name: "Account Name"
+})
 ```
 
-# [Accounts](https://github.com/kickplan/sdk-typescript/blob/main/src/resources/accounts/index.ts):
+## [Metrics](https://github.com/kickplan/sdk-typescript/blob/main/src/resources/metrics/index.ts)
+Track and set key metrics for accounts.
 
-In order to resolve features for an account, Kickplan needs to know an account key and the plan key they are on. Plan keys are not currently exposed in the API but will be soon.
-
-```javascript
-await kickplan.accounts.post({ key: string, plans?: string[] })
+```typescript
+await kickplan.metrics.setMetricsKey({
+  key: "metric-key",
+  value: "metric-value",
+  timestamp: new Date()
+})
 ```
 
-# [Metrics](https://github.com/kickplan/sdk-typescript/blob/main/src/resources/metrics/index.ts):
+## [Billable Objects](https://github.com/kickplan/sdk-typescript/blob/main/src/resources/billable_objects/index.ts)
+Manage billable entities within your application. These are used to track metrics and billing events over multiple billing cycles.
 
-A request to set a value for a key metric.
-
-```javascript
-await kickplan.metrics.setMetricsKey({ key: string, value: string, timestamp: Date })
+```typescript
+await kickplan.billableObjects.create({
+  key: "billable-object-key",
+  type: "billable-object-type",
+  parameters: {
+    // additional parameters
+  }
+})
 ```
 
-Returns a response with [metrics response json](https://github.com/kickplan/sdk-typescript/blob/v1/src/resources/metrics/types.ts) object.
-
-# [Evaluation](https://github.com/kickplan/sdk-typescript/blob/main/src/resources/evaluation.ts)
-
-4 evaluation methods are included
-
-```javascript
-kickplan.evaluation.getBooleanValue(key, value)
-kickplan.evaluation.getStringValue(key, value)
-kickplan.evaluation.getNumberValue(key, value)
-kickplan.evaluation.getObjectValue(key, value)
-
-```
+For detailed API documentation and advanced usage of each resource, please refer to our [API Reference](https://docs.kickplan.com/api).

@@ -1,5 +1,9 @@
-import { Base } from '../base';
-import { AccountRequest } from './types';
+import { Base } from "../base";
 export declare class Accounts extends Base {
-    post(data: AccountRequest): Promise<unknown>;
+    create(data: {
+        [key: string]: any;
+    }): Promise<unknown>;
+    update(data: {
+        [key: string]: any;
+    }): Promise<unknown>;
 }

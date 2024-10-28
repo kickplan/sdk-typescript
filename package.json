@@ -1,6 +1,6 @@
 {
-  "name": "sdk-typescript",
-  "version": "1.0.0",
+  "name": "@kickplan/sdk",
+  "version": "1.2.0",
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.m.js",
@@ -10,13 +10,14 @@
     "build": "tsc --build"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Kickplan, Inc.",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.14.8",
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "dotenv": "^16.4.5",
     "node-fetch": "^2.6.7"
   }
 }

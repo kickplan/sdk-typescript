@@ -1,11 +1,10 @@
-type Config = {
-    apiKey: string;
+export type KickplanConfig = {
+    apiKey?: string;
     baseUrl?: string;
 };
 export declare abstract class Base {
-    private apiKey;
-    private baseUrl;
-    constructor(config: Config);
+    readonly apiKey: string;
+    readonly baseUrl: string;
+    constructor(config?: KickplanConfig);
     protected request<T>(endpoint: string, options?: RequestInit): Promise<T>;
 }
-export {};
