@@ -1,44 +1,90 @@
+require('dotenv').config();
 const { KickplanApi } = require("sdk-typescript");
 
-async function exampleTests() {
-  const client = new KickplanApi({
-    apiKey: process.env.KICKPLAN_API_KEY,
-    baseUrl: " https://demo-control.proxy.kickplan.io",
-  });
+// Verify imports
+console.log('Imports:', {
+  KickplanApi: !!KickplanApi
+});
 
-  /*      FEATURES      */
-  // await client.features.resolve()
-  const result = await client.features.resolveWithAccount("123");
-  console.log(result);
-  const result2 = await client.features.isFeatureAvailableForAccount(
-    "test",
-    "123",
-  );
-  console.log(result2);
-
-  /*      ACCOUNTS       */
-  const result3 = await client.accounts.create({
-    key: "123",
-    name: "Globo Corp",
-    plans: ["123"],
-    custom_data: { foo: "bar" },
-  });
-  console.log(result3);
-
-  const result4 = await client.accounts.update({
-    key: "123",
-    custom_data: { foo: "baz" },
-  });
-  cosole.log(result4);
-
-  /*     METRICS        */
-  // const result4 = await client.metrics.setMetricsKey({ key: 'video-watched', value: '60', account_key: '123' })
-  // console.log(result4)
-
-  // const isBoolean = client.evaluation.getBooleanValue('key', true)
-  // console.log(isBoolean)
-
-  // client.evaluation.getObjectValue('key', 'string')
+// Simple environment variable test class
+class EnvTest {
+  testEnv() {
+    console.log({
+      directEnvAccess: {
+        apiKey: process.env.KICKPLAN_API_KEY,
+        baseUrl: process.env.KICKPLAN_BASE_URL
+      }
+    });
+  }
 }
 
-exampleTests();
+async function runTests() {
+  // Test environment variables
+  console.log('Testing environment setup...');
+  const envTest = new EnvTest();
+  envTest.testEnv();
+
+  // Initialize client
+  const client = new KickplanApi();
+
+  try {
+    // Create test account
+    // console.log('\nCreating account...');
+    // const account = await client.accounts.create({
+    //   key: "123",
+    //   name: "Globo Corp",
+    //   plans: ["lite"],
+    //   custom_fields: { foo: "bar" }
+    // });
+    // console.log('Account created:', account);
+
+    // Test account update
+    console.log('\nUpdating account...');
+    const updatedAccount = await client.accounts.update({
+      key: "123",
+      custom_fields: { foo: "baz" },
+    });
+    console.log('Account updated:', updatedAccount);
+
+    // Features tests
+    console.log('Testing features...');
+    const features = await client.features.resolveWithAccount("123");
+    console.log('Features resolved:', features);
+
+    const featureAvailable = await client.features.isFeatureAvailableForAccount(
+      "test",
+      "123"
+    );
+    console.log('Feature availability:', featureAvailable);
+
+    // Metrics test
+    console.log('Setting metrics...');
+    const metrics = await client.metrics.setMetricsKey({
+      key: 'video-watched',
+      value: '60',
+      account_key: '123'
+    });
+    console.log('Metrics set:', metrics);
+
+    // Evaluation tests
+    const isBoolean = client.evaluation.getBooleanValue('key', true);
+    console.log('Boolean evaluation:', isBoolean);
+
+    client.evaluation.getObjectValue('key', JSON.parse('{"foo": "bar"}'));
+
+    // Billable objects test
+    console.log('Creating billable object...');
+    const billableObject = await client.billableObjects.upsert({
+      external_id: '123',
+      external_type: 'widget',
+      account_key: '123',
+      properties: { foo: 'bar' },
+    });
+    console.log('Billable object created:', billableObject);
+
+  } catch (error) {
+    console.error('Test execution failed:', error);
+  }
+}
+
+runTests();
