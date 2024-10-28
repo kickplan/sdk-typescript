@@ -1,6 +1,6 @@
 {
   "name": "@kickplan/sdk",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.m.js",
@@ -17,6 +17,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "dotenv": "^16.4.5",
     "node-fetch": "^2.6.7"
   }
 }

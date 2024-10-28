@@ -23,9 +23,6 @@ export class Accounts extends Base {
 
     return this.request(`/api/accounts`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
       body: JSON.stringify(createAccountRequest), // Use the transformed request
     });
   }
@@ -50,11 +47,8 @@ export class Accounts extends Base {
       })),
     };
 
-    return this.request(`/api/accounts`, {
+    return this.request(`/api/accounts/${data.key}`, {
       method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
       body: JSON.stringify(updateAccountRequest), // Use the transformed request
     });
   }
