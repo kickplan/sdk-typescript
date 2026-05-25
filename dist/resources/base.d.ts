@@ -1,3 +1,4 @@
+import { RequestInit } from 'node-fetch';
 export type KickplanConfig = {
     apiKey?: string;
     baseUrl?: string;

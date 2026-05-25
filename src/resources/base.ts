@@ -1,4 +1,4 @@
-import fetch, { Response } from 'node-fetch';
+import fetch, { Response, RequestInit } from 'node-fetch';
 import * as dotenv from 'dotenv';
 
 // Load .env file
@@ -16,11 +16,13 @@ export abstract class Base {
   constructor(config?: KickplanConfig) {
     this.apiKey =
       config?.apiKey ||
-      process.env.KICKPLAN_API_KEY;
+      process.env.KICKPLAN_API_KEY ||
+      '';
 
     this.baseUrl =
       config?.baseUrl ||
-      process.env.KICKPLAN_BASE_URL;
+      process.env.KICKPLAN_BASE_URL ||
+      '';
 
     if (!this.apiKey) {
       throw new Error("Please supply a KICKPLAN_API_KEY via config object or environment variable");
